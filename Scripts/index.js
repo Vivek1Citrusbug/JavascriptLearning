@@ -117,3 +117,53 @@
 // let num = fruit.get("Apple");
 // document.getElementById('demo').innerHTML = num;
 
+// let person = {
+//     first_name: 'Vivek',
+//     last_name: 'Soni',
+ 
+//     //method
+//     getFunction: function () {
+//         return (`The name of the person is ${person.first_name} ${person.last_name}`)
+//     },
+//     //object within object
+//     phone_number: {
+//         mobile: '12345',
+//         landline: '6789'
+//     }
+// }
+// console.log(person.getFunction());
+// console.log("Landline number is : ",person.phone_number.landline);
+
+// class vehicle {
+//     constructor(name,maker,engine){
+//         this.name = name;
+//         this.maker = maker;
+//         this.engine = engine;
+//     }
+//     getdetails (){
+//         return (`Car details : ${this.name}.`)
+//     }
+// }
+
+// let car1 = new vehicle('yamaha','yamaha','V5');
+// console.log(car1.getdetails())
+
+// let key_pressed = document.getElementById('field');
+// key_pressed.addEventListener("keydown",onKeyDown);
+// key_pressed.addEventListener("keyup",onKeyUp);
+
+// function onKeyDown(event){
+//     document.getElementById('status').innerHTML = 'keydown : '+ event.key + '<br>';
+// }
+
+// function onKeyUp(event){
+//     document.getElementById('status').innerHTML += 'keyup : '+ event.key + '<br>'
+// }
+
+let youtubevar = document.getElementById('youtubelink');
+youtubevar.addEventListener('click',function(event){
+    console.log(event);
+    event.preventDefault();
+    youtubevar.textContent = 'default prevented on this link'
+})
+
