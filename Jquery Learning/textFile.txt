@@ -1,0 +1,1 @@
+hello this is sample text file to test ajax feature in jquery.
