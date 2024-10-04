@@ -49,12 +49,7 @@ function validateStep(step) {
             }
             isValidForm = false;
         }
-        var now = new Date();
-        console.log("Zip code : ",zipcode);
-        console.log("Currnt data : ",now);
-        console.log("Birthdate : ".birthdate);
-        currentDate = new Date().toISOString().split("T")[0];
-        if (!birthdate && birthdate > currentDate) {
+        if (!birthdate) {
             error_message.textContent += "Please select a birthdate.\n";
             isValidForm = false;
         }
@@ -65,9 +60,7 @@ function validateStep(step) {
         const getHobbies = document.querySelectorAll('input[name="hobbies"]:checked');   
         const technologySelect = document.getElementById('technology');
         const selectedTechnology = Array.from(technologySelect.selectedOptions).map(option => option.value);
-        console.log("gender : ",getGender);
-        console.log("hobbies : ",now);
-        console.log("selectedTechnology : ",selectedTechnology);
+        
         if (!getGender) {
             error_message.textContent += "Please select a gender.\n";
             isValidForm = false;
