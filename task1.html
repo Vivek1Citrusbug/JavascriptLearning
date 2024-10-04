@@ -1,108 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submission task</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Step Form with Validation</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
-    <div class="container my-5">
-        <h2>Register Form</h2>
-        <p id="error" style="color: red;"></p>
-        <form action="" id="myForm" name="userform">
-            <div class="tab">
-                <div class="form-group">
-                    <label for="name_input">Name : </label>
-                    <input type="text" class="form-control" id="name_input" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label for="useremail">Email : </label>
-                    <input type="text" class="form-control" id="useremail" placeholder="Enter Email">
-                </div>
-            </div>
-
-            <div class="tab">
-                <div class="form-group">
-                    <label for="contactNumber">Contact Number : </label>
-                    <input type="text" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
-                </div>
-                <div class="form-group">
-                    <label for="zipcode">Zipcode : </label>
-                    <input type="text" class="form-control" id="zipcode" placeholder="Enter zipcode">
-                </div>
-            </div>
-
-            <div class="tab">
-                <div class="form-group">
-                    <label for="birthdate">Birthdate : </label>
-                    <input type="date" class="form-control" id="birthdate" placeholder="Enter Birthdate"
-                        min="1970-01-01" max="2024-09-01">
-                </div>
-                <div>
-                    <h4>Gender</h4>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="genderradio" id="male" value="male">
-                    <label class="form-check-label" for="male">
-                        Male
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="genderradio" id="female" value="female">
-                    <label class="form-check-label" for="female">
-                        Female
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="genderradio" id="other" value="other">
-                    <label class="form-check-label" for="other">
-                        Other
-                    </label>
-                </div>
-            </div>
-
-            <div class="tab">
-                <div>
-                    <h4>Hobbies</h4>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="hobbies" type="checkbox" id="cricket" value="cricket">
-                    <label class="form-check-label" for="cricket">Cricket</label>
-                </div>
-                <div class="form-check ">
-                    <input class="form-check-input" name="hobbies" type="checkbox" id="reading" value="reading">
-                    <label class="form-check-label" for="reading">reading</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="hobbies" type="checkbox" id="travelling" value="travelling">
-                    <label class="form-check-label" for="travelling">travelling</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="hobbies" type="checkbox" id="movies" value="movies">
-                    <label class="form-check-label" for="movies">movies</label>
-                </div>
-                <div>
-                    <h4>Technology</h4>
-                </div>
-                <select id="technology" class="form-select" multiple aria-label="multiple select example">
-                    <option value="python">PYTHON</option>
-                    <option value="php">PHP</option>
-                    <option value="html">HTML</option>
-                    <option value="css">CSS</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary my-5">Submit</button>
-            <button class="btn my-5" onclick="location.href='listUser.html'" type="button">View list</button>
-        </form>
+<form id="myForm">
+    <div class="step active">
+        <h2>Step 1: Personal Information</h2>
+        <label for="name_input">Name:</label>
+        <input type="text" id="name_input" name="name">
+        <br>
+        <label for="useremail">Email:</label>
+        <input type="email" id="useremail" name="email">
+        <br>
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contact">
+        <br>
+    </div>
+    
+    <div class="step">
+        <h2>Step 2: Additional Information</h2>
+        <label for="zipcode">Zip Code:</label>
+        <input type="text" id="zipcode" name="zipcode">
+        <br>
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" name="birthdate" id="birthdate" required>
+        <br>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="Scripts/task1.js"></script>
-</body>
+    <div class="step">
+        <h2>Step 3: Preferences</h2>
+        <label>Gender:</label>
+        <input type="radio" name="genderradio" value="Male"> Male
+        <input type="radio" name="genderradio" value="Female"> Female
+        <br>
+        <label>Hobbies:</label>
+        <input type="checkbox" name="hobbies" value="Reading"> Reading
+        <input type="checkbox" name="hobbies" value="Traveling"> Traveling
+        <br>
+        <label for="technology">Select Technology:</label>
+        <select id="technology" multiple>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="HTML">HTML</option>
+        </select>
+    </div>
 
+    <div class="step" id="summary">
+        <h3>Summary of your inputs</h3>
+        <p><strong>Name:</strong> <span id="summaryName"></span></p>
+        <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+        <p><strong>Contact Number:</strong> <span id="summaryContact"></span></p>
+        <p><strong>Zipcode:</strong> <span id="summaryZipcode"></span></p>
+        <p><strong>Birthdate:</strong> <span id="summaryBirthdate"></span></p>
+        <p><strong>Gender:</strong> <span id="summaryGender"></span></p>
+        <p><strong>Hobbies:</strong> <span id="summaryHobbies"></span></p>
+        <p><strong>Technologies:</strong> <span id="summaryTechnologies"></span></p>
+    </div>
+
+    <div class="navigation">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+    
+    <p id="error"></p>
+</form>
+
+
+<script src="Scripts/validation.js"></script>
+<script src="Scripts/main.js"></script>
+</body>
 </html>

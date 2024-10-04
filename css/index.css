@@ -1,0 +1,12 @@
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
+}
+.navigation {
+    margin-top: 20px;
+}
+#error {
+    color: red;
+}
