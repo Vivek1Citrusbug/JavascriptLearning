@@ -8,15 +8,16 @@ function validateStep(step) {
     let error_message_gender = document.getElementById('gender-error');
     let error_message_hobbies = document.getElementById('hobbies-error');
     let error_message_technology = document.getElementById('technology-error');
-    error_message_name.textContent="";
-    error_message_email.textContent="";
-    error_message_contact.textContent="";
-    error_message_zipcode.textContent="";
-    error_message_birthdate.textContent="";
-    error_message_gender.textContent="";
-    error_message_hobbies.textContent="";
-    error_message_technology.textContent="";
-    // error_message.textContent = "";
+    
+    error_message_name.textContent = "";
+    error_message_email.textContent = "";
+    error_message_contact.textContent = "";
+    error_message_zipcode.textContent = "";
+    error_message_birthdate.textContent = "";
+    error_message_gender.textContent = "";
+    error_message_hobbies.textContent = "";
+    error_message_technology.textContent = "";
+
 
     const usernamePattern = /^.{1,}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -29,30 +30,21 @@ function validateStep(step) {
         const contactNumber = document.getElementById('contactNumber').value;
 
         if (!username.match(usernamePattern)) {
-            // error_message.textContent += "Username must be at least 1 character long.\n";
             error_message_name.textContent = "Username must be at least 1 character long.\n";
             isValidForm = false;
         }
 
         if (!useremail.match(emailPattern)) {
             if (!useremail.length)
-                // error_message.textContent += "User email should not be empty.\n";
-            error_message_email.textContent = "User email should not be empty.\n";
+                error_message_email.textContent = "User email should not be empty.\n";
             else {
-                // error_message.textContent += "User email should be in the form of abc@xyz.com\n";
                 error_message_email.textContent = "User email should be in the form of abc@xyz.com\n";
             }
             isValidForm = false;
         }
 
         if (!contactNumber.match(contactPattern)) {
-            if (contactNumber.length < 10)
-                // error_message.textContent += "Contact number should be of length 10.\n";
-            error_message_contact.textContent = "Contact number should be of length 10.\n";
-            else {
-                // error_message.textContent += "Please enter a valid contact number.\n";
-                error_message_contact.textContent = "Please enter a valid contact number.\n";
-            }
+            error_message_contact.textContent = "Please enter a valid contact number.\n";
             isValidForm = false;
         }
     }
@@ -63,39 +55,33 @@ function validateStep(step) {
 
         if (!zipcode.match(zipcodePattern)) {
             if (zipcode.length < 6)
-                // error_message.textContent += "Zipcode should be 6 numbers long.\n";
-            error_message_zipcode.textContent = "Zipcode should be 6 numbers long.\n";
+                error_message_zipcode.textContent = "Zipcode should be 6 numbers long.\n";
             else {
-                // error_message.textContent += "Please enter a valid Zipcode.\n";
                 error_message_zipcode.textContent = "Please enter a valid Zipcode.\n";
             }
             isValidForm = false;
         }
         if (!birthdate) {
-            // error_message.textContent += "Please select a birthdate.\n";
             error_message_birthdate.textContent = "Please select a birthdate.\n";
             isValidForm = false;
         }
     }
 
     if (step === 2) {
-        const getGender = document.querySelector('input[name="genderradio"]:checked');   
-        const getHobbies = document.querySelectorAll('input[name="hobbies"]:checked');   
+        const getGender = document.querySelector('input[name="genderradio"]:checked');
+        const getHobbies = document.querySelectorAll('input[name="hobbies"]:checked');
         const technologySelect = document.getElementById('technology');
         const selectedTechnology = Array.from(technologySelect.selectedOptions).map(option => option.value);
-        
+
         if (!getGender) {
-            // error_message.textContent += "Please select a gender.\n";
             error_message_gender.textContent = "Please select a gender.\n";
             isValidForm = false;
         }
         if (getHobbies.length === 0) {
-            // error_message.textContent += "Please select hobbies.\n";
             error_message_hobbies.textContent = "Please select hobbies.\n";
             isValidForm = false;
         }
         if (selectedTechnology.length === 0) {
-            // error_message.textContent += "Please select technology.\n";
             error_message_technology.textContent = "Please select technology.\n";
             isValidForm = false;
         }

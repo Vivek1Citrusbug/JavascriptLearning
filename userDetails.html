@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 id="userTitle" class="my-3"></h2>
+            <div class="col">
+                <form>
+                    <!-- Name Field -->
+                    <div class="form-group my-3">
+                        <label for="name_input" class="title-input">Name:</label>
+                        <input type="text" id="name_input" class="form-control" name="name" disabled>
+                    </div>
+    
+                    <!-- Email Field -->
+                    <div class="form-group my-3">
+                        <label for="useremail">Email:</label>
+                        <input type="email" id="useremail" class="form-control" name="email" disabled>
+                    </div>
+    
+                    <!-- Contact Number Field -->
+                    <div class="form-group my-3">
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="text" id="contactNumber" class="form-control" name="contact" disabled>
+                    </div>
+    
+                    <!-- Zip Code Field -->
+                    <div class="form-group my-3">
+                        <label for="zipcode">Zip Code:</label>
+                        <input type="text" id="zipcode" class="form-control" name="zipcode" disabled>
+                    </div>
+    
+                    <!-- Birthdate Field -->
+                    <div class="form-group my-3">
+                        <label for="birthdate">Birthdate:</label>
+                        <input type="date" name="birthdate" id="birthdate" class="form-control" min="1980-01-01" max="2024-01-01" disabled>
+                    </div>
+    
+                    <!-- Gender Radio Buttons -->
+                    <div class="form-group my-3">
+                        <label>Gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genderradio" value="Male" id="male" disabled>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="genderradio" value="Female" id="female" disabled>
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+    
+                    <!-- Hobbies Checkboxes -->
+                    <div class="form-group my-3">
+                        <label>Hobbies:</label>
+                        <div class="form-check">
+                            <input type="checkbox" name="hobbies" value="Reading" class="form-check-input" id="reading" disabled>
+                            <label class="form-check-label" for="reading">Reading</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="hobbies" value="Traveling" class="form-check-input" id="traveling" disabled>
+                            <label class="form-check-label" for="traveling">Traveling</label>
+                        </div>
+                    </div>
+    
+                    <!-- Technology Select -->
+                    <div class="form-group my-3">
+                        <label for="technology">Select Technology:</label>
+                        <select id="technology" class="form-control" multiple disabled>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="HTML">HTML</option>
+                        </select>
+                    </div>
+    
+                    <!-- Back Button -->
+                    <button type="button" class="btn btn-primary my-3" onclick="window.location.href='listUser.html'">Back</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="Scripts/selectedUser.js"></script>
+</body>
+</html>
