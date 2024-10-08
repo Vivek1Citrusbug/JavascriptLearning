@@ -10,24 +10,29 @@
 <form id="myForm">
     <div class="step active">
         <h2>Step 1: Personal Information</h2>
-        <label for="name_input">Name:</label>
-        <input type="text" id="name_input" name="name">
+        <label for="name_input" class="title-input ">Name:</label>
+        <input type="text" id="name_input" class="gap4" name="name">
+        <span id="name-error" class="error-message"></span>
         <br>
         <label for="useremail">Email:</label>
-        <input type="email" id="useremail" name="email">
+        <input type="email" id="useremail" class="gap4" name="email">
+        <span id="email-error" class="error-message"></span>
         <br>
         <label for="contactNumber">Contact Number:</label>
-        <input type="text" id="contactNumber" name="contact">
+        <input type="text" id="contactNumber" class="gap4" name="contact">
+        <span id="contact-error" class="error-message"></span>
         <br>
     </div>
     
     <div class="step">
         <h2>Step 2: Additional Information</h2>
         <label for="zipcode">Zip Code:</label>
-        <input type="text" id="zipcode" name="zipcode">
+        <input type="text" id="zipcode" class="gap4" name="zipcode">
+        <span id="zipcode-error" class="error-message"></span>
         <br>
         <label for="birthdate">Birthdate:</label>
-        <input type="date" name="birthdate" id="birthdate" min="1980-01-01" max="2024-01-01">
+        <input type="date" name="birthdate" id="birthdate" class="gap4" min="1980-01-01" max="2024-01-01">
+        <span id="birthdate-error" class="error-message"></span>
         <br>
     </div>
 
@@ -36,21 +41,24 @@
         <label>Gender:</label>
         <input type="radio" name="genderradio" value="Male"> Male
         <input type="radio" name="genderradio" value="Female"> Female
+        <span id="gender-error" class="error-message"></span>
         <br>
         <label>Hobbies:</label>
-        <input type="checkbox" name="hobbies" value="Reading"> Reading
-        <input type="checkbox" name="hobbies" value="Traveling"> Traveling
+        <input type="checkbox" name="hobbies" value="Reading"class="gap4"> Reading
+        <input type="checkbox" name="hobbies" value="Traveling" class="gap4"> Traveling
+        <span id="hobbies-error" class="error-message"></span>
         <br>
         <label for="technology">Select Technology:</label>
-        <select id="technology" multiple>
+        <select id="technology" class="gap4" multiple>
             <option value="JavaScript">JavaScript</option>
             <option value="Python">Python</option>
             <option value="HTML">HTML</option>
         </select>
+        <span id="technology-error" class="error-message"></span>
     </div>
 
     <div class="step" id="summary">
-        <h3>Summary of your inputs</h3>
+        <h2>Summary of your inputs</h2>
         <p><strong>Name:</strong> <span id="summaryName"></span></p>
         <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
         <p><strong>Contact Number:</strong> <span id="summaryContact"></span></p>
@@ -65,8 +73,8 @@
         <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
         <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
-    
-    <p id="error"></p>
+
+    <!-- <p id="error"></p> -->
 </form>
 <script src="Scripts/validation.js"></script>
 <script src="Scripts/main.js"></script>

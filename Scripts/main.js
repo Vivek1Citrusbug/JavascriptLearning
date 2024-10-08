@@ -52,8 +52,15 @@ function nextPrev(direction) {
     showStep(currentStep);
 }
 
-function submitForm() {
+function addNewUser(formData){
+    let stored_Data = localStorage.getItem("Users");
+    stored_Data = stored_Data ? JSON.parse(stored_Data):[];
+    stored_Data.push(formData);
+    localStorage.setItem("Users",JSON.stringify(stored_Data));
+    alert("Form submitted successfully!");
+}
 
+function submitForm() {
     const username = document.getElementById('name_input').value;
     const useremail = document.getElementById('useremail').value;
     const contactNumber = document.getElementById('contactNumber').value;
@@ -63,8 +70,11 @@ function submitForm() {
     const gethobbies = document.querySelectorAll('input[name="hobbies"]:checked');
     const technologySelect = document.getElementById('technology');
     const selectedTechnology = Array.from(technologySelect.selectedOptions).map(option => option.value);
-
+    
+    let date = new Date();
+    let userID = date.getTime();
     const formData = {
+        userID:userID.toString(),
         name: username,
         email: useremail,
         contact: contactNumber,
@@ -75,11 +85,7 @@ function submitForm() {
         technologies: selectedTechnology 
     };
 
-    let date = new Date();
-    let userID = date.getTime();
-    localStorage.setItem("User " + userID.toString(), JSON.stringify(formData));
-
-    alert("Form submitted successfully!");
+    addNewUser(formData);
 
     document.getElementById("myForm").reset();
     location.reload();
