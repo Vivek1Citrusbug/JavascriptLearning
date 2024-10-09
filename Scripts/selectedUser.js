@@ -6,8 +6,7 @@ document.getElementById("useremail").value = userData.email;
 document.getElementById("contactNumber").value = userData.contact;
 document.getElementById("zipcode").value = userData.zipcode;
 document.getElementById("birthdate").value = userData.birthdate;
-document.getElementById("zipcode").value = userData.zipcode;
-document.getElementById("birthdate").value = userData.birthdate;
+
 
 const genderRadioButtons = document.getElementsByName("genderradio");
 genderRadioButtons.forEach(radioButton => {

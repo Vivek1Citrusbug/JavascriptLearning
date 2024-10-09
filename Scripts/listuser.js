@@ -46,3 +46,28 @@ function viewUserDetails(users, userId) {
         alert("User not found!");
     }
 }
+
+function showCustomAlert() {
+    document.getElementById("customAlert").style.display = "block";
+    document.getElementById("button1").addEventListener("click", function() {
+        closeCustomAlert();
+    });
+
+    document.getElementById("button2").addEventListener("click", function() {
+        closeCustomAlert();
+    });
+
+    document.getElementById("button3").addEventListener("click", function() {
+        editallUSers();
+    });
+}
+
+function closeCustomAlert() {
+    document.getElementById("customAlert").style.display = "none";
+}
+
+function editallUSers(){
+    let allUsersData = localStorage.getItem("Users");
+    const allUsersJsonData = JSON.parse(allUsersData);
+    
+}
