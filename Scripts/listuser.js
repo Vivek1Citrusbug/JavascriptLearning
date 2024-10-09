@@ -58,16 +58,10 @@ function showCustomAlert() {
     });
 
     document.getElementById("button3").addEventListener("click", function() {
-        editallUSers();
+        location.href = 'allUsersListing.html';
     });
 }
 
 function closeCustomAlert() {
     document.getElementById("customAlert").style.display = "none";
-}
-
-function editallUSers(){
-    let allUsersData = localStorage.getItem("Users");
-    const allUsersJsonData = JSON.parse(allUsersData);
-    
 }
