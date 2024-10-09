@@ -1,6 +1,5 @@
 let slideIndex = 1;
 let users = JSON.parse(localStorage.getItem('Users'));
-let isvalid = true;
 
 $(document).ready(function () {
     loadSlideshow(users);

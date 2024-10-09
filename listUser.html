@@ -62,15 +62,15 @@
                 </table>
             </div>
         </div>
-        <button type="button" onclick="showCustomAlert()">Edit</button>
-        <button type="button">Delete</button>
-        <button type="button" onclick="window.location.href='task1.html'">Back</button>
+        <button type="button" class="btn btn-info" onclick="showCustomAlert()">Edit</button>
+        <button type="button" class="btn btn-danger" onclick="deleteSelectedRecords()">Delete</button>
+        <button type="button" class="btn btn-dark" onclick="window.location.href='task1.html'">Back</button>
 
         <div id="customAlert" class="custom-alert">
             <div class="custom-alert-content">
                 <p>Select Action : </p>
                 <div class="custom-alert-buttons">
-                    <button id="button1">Cancle</button>
+                    <button id="button1" >Cancle</button>
                     <button id="button2">Edit Manually</button>
                     <button id="button3">Edit All</button>
                 </div>

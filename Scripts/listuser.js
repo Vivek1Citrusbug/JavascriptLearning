@@ -8,7 +8,7 @@ if (stored_Data) {
         userBlock += `<tr>
                         <td>
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="checkbox_${user.userID}">
+                                <input type="checkbox" class="custom-control-input custome_checkbox_checker" id="checkbox_${user.userID}">
                             </div>
                         </td>
                         <td>${user.userID}</td>
@@ -20,7 +20,7 @@ if (stored_Data) {
                         <td>${user.gender}</td>
                         <td>${user.hobbies}</td>
                         <td>${user.technologies}</td>
-                        <td><button type="button" id="viewButton_${user.userID}">View</button></td>
+                        <td><button type="button" class='btn btn-primary' id="viewButton_${user.userID}">View</button></td>
                     </tr>`
     });
 
@@ -28,7 +28,7 @@ if (stored_Data) {
         userList.innerHTML = userBlock;
 
         users.forEach(user => {
-            document.querySelector(`#viewButton_${user.userID}`).addEventListener('click', function() {
+            document.querySelector(`#viewButton_${user.userID}`).addEventListener('click', function () {
                 viewUserDetails(users, user.userID);
             });
         });
@@ -41,7 +41,7 @@ function viewUserDetails(users, userId) {
     const userData = users.find(user => user.userID === userId);
     if (userData) {
         localStorage.setItem("selectedUser", JSON.stringify(userData));
-        window.location.href = 'userDetails.html'; 
+        window.location.href = 'userDetails.html';
     } else {
         alert("User not found!");
     }
@@ -49,19 +49,35 @@ function viewUserDetails(users, userId) {
 
 function showCustomAlert() {
     document.getElementById("customAlert").style.display = "block";
-    document.getElementById("button1").addEventListener("click", function() {
+    document.getElementById("button1").addEventListener("click", function () {
         closeCustomAlert();
     });
 
-    document.getElementById("button2").addEventListener("click", function() {
+    document.getElementById("button2").addEventListener("click", function () {
         closeCustomAlert();
     });
 
-    document.getElementById("button3").addEventListener("click", function() {
+    document.getElementById("button3").addEventListener("click", function () {
         location.href = 'allUsersListing.html';
     });
 }
 
 function closeCustomAlert() {
     document.getElementById("customAlert").style.display = "none";
+}
+
+function deleteSelectedRecords() {
+    let allRecords = localStorage.getItem("Users");
+    let finalListOfRecords = JSON.parse(allRecords);
+    console.log("In delete records function");
+    const records = Array.from(document.getElementsByClassName('custome_checkbox_checker'));
+    records.forEach((record, index) => {
+        if (record.checked) {
+            let selectedID = record.id.split('_')[1];
+            finalListOfRecords = finalListOfRecords.filter(user => user.userID != selectedID);
+        }
+    });
+    localStorage.setItem('Users', JSON.stringify(finalListOfRecords));
+    location.reload();
+    console.log("Updated records in localStorage", finalListOfRecords);
 }
