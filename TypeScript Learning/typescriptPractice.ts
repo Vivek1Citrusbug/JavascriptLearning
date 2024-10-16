@@ -89,7 +89,7 @@ class Person {
   console.log(person.getName());
 
 class Person {
-    name is a private member variable
+    // name is a private member variable
     public constructor(private name: string) {}
   
     public getName(): string {
@@ -102,6 +102,6 @@ class Person {
 
 function createPair<S, T>(v1: S, v2: T): [S, T] {
     return [v1, v2];
-  }
+}
   console.log(createPair<string, number>('hello', 42)); 
 export{}
