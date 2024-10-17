@@ -88,3 +88,55 @@ function validateStep(step : number) :boolean{
     }
     return isValidForm;
 }
+
+function checkName(){
+    const username  = (document.getElementById('name_input') as HTMLInputElement).value;
+    const usernamePattern = /^.{1,}$/;
+    if (!username.match(usernamePattern)) {
+        let error_message_name = document.getElementById('name-error') as HTMLElement;
+        error_message_name.textContent = "Username must be at least 1 character long.\n";
+    }
+}
+
+function checkEmail(){
+    const useremail  = (document.getElementById('useremail') as HTMLInputElement).value;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!useremail.match(emailPattern)) {
+        let error_message_email = document.getElementById('email-error')  as HTMLElement;
+        if (!useremail.length)
+            error_message_email.textContent = "User email should not be empty.\n";
+        else {
+            error_message_email.textContent = "User email should be in the form of abc@xyz.com\n";
+        }
+    }
+}
+
+function checkContact(){
+    const contactNumber  = (document.getElementById('contactNumber') as HTMLInputElement).value;
+    const contactPattern = /^(\+91[\s]?)?[0]?[6789]\d{9}$/;
+    if (!contactNumber.match(contactPattern)) {
+        let error_message_contact = document.getElementById('contact-error')  as HTMLElement;
+        error_message_contact.textContent = "Please enter a valid contact number.\n";
+    }
+}
+
+function checkZipcode(){
+    const zipcodePattern = /^[0-9]{6}$/;
+    let error_message_zipcode = document.getElementById('zipcode-error')  as HTMLElement;
+    const zipcode = (document.getElementById('zipcode') as HTMLInputElement).value;
+    if (!zipcode.match(zipcodePattern)) {
+        if (zipcode.length < 6)
+            error_message_zipcode.textContent = "Zipcode should be 6 numbers long.\n";
+        else {
+            error_message_zipcode.textContent = "Please enter a valid Zipcode.\n";
+        }
+    }
+}
+
+function checkBirthdate(){
+    let error_message_birthdate = document.getElementById('birthdate-error')  as HTMLElement;
+    const birthdate = (document.querySelector('input[type="date"]') as HTMLInputElement).value;
+    if (!birthdate) {
+        error_message_birthdate.textContent = "Please select a birthdate.\n";
+    }
+}

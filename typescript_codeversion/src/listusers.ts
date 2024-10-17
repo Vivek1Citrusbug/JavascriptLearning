@@ -72,7 +72,35 @@ function showCustomAlert(): void {
     const button3 = document.getElementById("button3") as HTMLButtonElement;
 
     button1.addEventListener("click", closeCustomAlert);
-    button2.addEventListener("click", closeCustomAlert);
+    button2.addEventListener("click", () => {
+    const selectedCheckboxes = document.querySelectorAll('.custome_checkbox_checker:checked') as NodeListOf<HTMLInputElement>;
+
+    if (selectedCheckboxes.length === 0) {
+        console.log("No checkboxes selected.");
+        alert("No checkboxes selected!");
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('Users') || '[]');
+    let selectedUsers: any[] = [];
+    selectedCheckboxes.forEach((checkbox) => {
+        const selectedUserId = checkbox.id.split('_');
+        const matchedUser = users.find((user: any) => String(user.userID) === selectedUserId[1]);
+        if (matchedUser) {
+            selectedUsers.push(matchedUser);
+        } else {
+            console.log("No user found for Checkbox ID:", selectedUserId);
+        }
+    });
+
+    if (selectedUsers.length === 0) {
+        console.log("No users matched with the selected checkboxes.");
+        alert("No matching users found.");
+        return;
+    }
+    localStorage.setItem('SelectedUpdateUsers', JSON.stringify(selectedUsers));
+    location.href = 'selectedUser.html';
+    });
 
     button3.addEventListener("click", () => {
         location.href = 'allUsersListing.html';

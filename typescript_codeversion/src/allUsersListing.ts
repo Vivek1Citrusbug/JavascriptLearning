@@ -1,79 +1,62 @@
-import $ from 'jquery';
-/// <reference types="jquery" />
+let slideIndex: number = 1;
+let users: { userID: string; name: string; email: string; contact: string; zipcode: string; birthdate: string; gender: string; hobbies: string[]; technologies: string[]; }[] = JSON.parse(localStorage.getItem('Users') || '[]');
 
-interface userInterface {
-    userID: string;
-    name: string;
-    email: string;
-    contact: string;
-    zipcode: string;
-    birthdate: string;
-    gender: string;
-    hobbies: string[];
-    technologies: string[];
-}
-
-let slideIndex = 1;
-let users : userInterface[] = JSON.parse(localStorage.getItem('Users') || '[]');
-
-$(function () {
+$(document).ready(function () {
     loadSlideshow(users);
-    $('#updateUserForm').on('submit', function (event:JQuery.Event) {
+    $('#updateUserForm').on('submit', function (event: Event) {
         event.preventDefault();
         updateUser(slideIndex);
     });
 });
 
-
-function loadSlideshow(users : userInterface[]) {
+function loadSlideshow(users: any[]): void {
     showUser(slideIndex);
-    window.plusSlides = function (n) {
+    window.plusSlides = function (n: number) {
         showUser(slideIndex += n);
     };
 }
 
-
-function showUser(n) {
+function showUser(n: number): void {
     if (n > users.length) { slideIndex = 1; }
     if (n < 1) { slideIndex = users.length; }
     const userData = users[slideIndex - 1];
-    document.getElementById("userTitle").innerHTML = "User: " + userData.userID;
-    document.getElementById("name_input").value = userData.name || '';
-    document.getElementById("useremail").value = userData.email || '';
-    document.getElementById("contactNumber").value = userData.contact || '';
-    document.getElementById("zipcode").value = userData.zipcode || '';
-    document.getElementById("birthdate").value = userData.birthdate || '';
+    (document.getElementById("userTitle") as HTMLElement).innerHTML = "User: " + userData.userID;
+    (document.getElementById("name_input") as HTMLInputElement).value = userData.name || '';
+    (document.getElementById("useremail") as HTMLInputElement).value = userData.email || '';
+    (document.getElementById("contactNumber") as HTMLInputElement).value = userData.contact || '';
+    (document.getElementById("zipcode") as HTMLInputElement).value = userData.zipcode || '';
+    (document.getElementById("birthdate") as HTMLInputElement).value = userData.birthdate || '';
 
-    const genderRadioButtons = document.getElementsByName("genderradio");
+    const genderRadioButtons = document.getElementsByName("genderradio") as NodeListOf<HTMLInputElement>;
     genderRadioButtons.forEach(radioButton => {
         if (radioButton.value === userData.gender) {
             radioButton.checked = true;
         }
     });
 
-    const hobbiesCheckboxes = document.querySelectorAll('input[name="hobbies"]');
+    const hobbiesCheckboxes = document.querySelectorAll('input[name="hobbies"]') as NodeListOf<HTMLInputElement>;
     hobbiesCheckboxes.forEach(checkbox => {
         checkbox.checked = userData.hobbies.includes(checkbox.value);
     });
 
-    const technologySelect = document.getElementById('technology');
+    const technologySelect = document.getElementById('technology') as HTMLSelectElement;
     const options = technologySelect.options;
     for (let i = 0; i < options.length; i++) {
         options[i].selected = userData.technologies.includes(options[i].value);
     }
 }
 
-function updateUser(index) {
-    let updatedUser = {
+function updateUser(index: number): void {
+    const updatedUser = {
         userID: users[index - 1].userID,
-        name: document.getElementById("name_input").value,
-        email: document.getElementById("useremail").value,
-        contact: document.getElementById("contactNumber").value,
-        zipcode: document.getElementById("zipcode").value,
-        birthdate: document.getElementById("birthdate").value,
-        gender: document.querySelector('input[name="genderradio"]:checked').value,
-        hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(checkbox => checkbox.value),
-        technologies: Array.from(document.getElementById('technology').selectedOptions).map(option => option.value)
+        name: (document.getElementById("name_input") as HTMLInputElement).value,
+        email: (document.getElementById("useremail") as HTMLInputElement).value,
+        contact: (document.getElementById("contactNumber") as HTMLInputElement).value,
+        zipcode: (document.getElementById("zipcode") as HTMLInputElement).value,
+        birthdate: (document.getElementById("birthdate") as HTMLInputElement).value,
+        gender: (document.querySelector('input[name="genderradio"]:checked') as HTMLInputElement)?.value,
+        hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked') as NodeListOf<HTMLInputElement>).map(checkbox => checkbox.value),
+        technologies: Array.from((document.getElementById('technology') as HTMLSelectElement).selectedOptions).map(option => option.value)
     };
 
     if (validation(updatedUser)) {
@@ -81,23 +64,19 @@ function updateUser(index) {
         localStorage.setItem('Users', JSON.stringify(users));
         alert("User information updated successfully!");
     }
-    else {
-        return;
-    }
 }
 
-function validation(user) {
-
+function validation(user: { name: string; email: string; contact: string; zipcode: string; birthdate: string; gender: string; hobbies: string[]; technologies: string[]; }): boolean {
     let isValidForm = true;
 
-    let error_message_name = document.getElementById('name-error');
-    let error_message_email = document.getElementById('email-error');
-    let error_message_contact = document.getElementById('contact-error');
-    let error_message_zipcode = document.getElementById('zipcode-error');
-    let error_message_birthdate = document.getElementById('birthdate-error');
-    let error_message_gender = document.getElementById('gender-error');
-    let error_message_hobbies = document.getElementById('hobbies-error');
-    let error_message_technology = document.getElementById('technology-error');
+    const error_message_name = document.getElementById('name-error') as HTMLElement;
+    const error_message_email = document.getElementById('email-error') as HTMLElement;
+    const error_message_contact = document.getElementById('contact-error') as HTMLElement;
+    const error_message_zipcode = document.getElementById('zipcode-error') as HTMLElement;
+    const error_message_birthdate = document.getElementById('birthdate-error') as HTMLElement;
+    const error_message_gender = document.getElementById('gender-error') as HTMLElement;
+    const error_message_hobbies = document.getElementById('hobbies-error') as HTMLElement;
+    const error_message_technology = document.getElementById('technology-error') as HTMLElement;
 
     error_message_name.textContent = "";
     error_message_email.textContent = "";
@@ -108,15 +87,14 @@ function validation(user) {
     error_message_hobbies.textContent = "";
     error_message_technology.textContent = "";
 
-
     const usernamePattern = /^.{1,}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const contactPattern = /^(\+91[\s]?)?[0]?[6789]\d{9}$/;
     const zipcodePattern = /^[0-9]{6}$/;
 
-    const username = document.getElementById('name_input').value;
-    const useremail = document.getElementById('useremail').value;
-    const contactNumber = document.getElementById('contactNumber').value;
+    const username = (document.getElementById('name_input') as HTMLInputElement).value;
+    const useremail = (document.getElementById('useremail') as HTMLInputElement).value;
+    const contactNumber = (document.getElementById('contactNumber') as HTMLInputElement).value;
 
     if (!username.match(usernamePattern)) {
         error_message_name.textContent = "Username must be at least 1 character long.\n";
@@ -137,8 +115,8 @@ function validation(user) {
         isValidForm = false;
     }
 
-    const zipcode = document.getElementById('zipcode').value;
-    const birthdate = document.querySelector('input[type="date"]').value;
+    const zipcode = (document.getElementById('zipcode') as HTMLInputElement).value;
+    const birthdate = (document.querySelector('input[type="date"]') as HTMLInputElement)?.value;
 
     if (!zipcode.match(zipcodePattern)) {
         if (zipcode.length < 6)
@@ -153,9 +131,9 @@ function validation(user) {
         isValidForm = false;
     }
 
-    const getGender = document.querySelector('input[name="genderradio"]:checked');
-    const getHobbies = document.querySelectorAll('input[name="hobbies"]:checked');
-    const technologySelect = document.getElementById('technology');
+    const getGender = document.querySelector('input[name="genderradio"]:checked') as HTMLInputElement;
+    const getHobbies = document.querySelectorAll('input[name="hobbies"]:checked') as NodeListOf<HTMLInputElement>;
+    const technologySelect = document.getElementById('technology') as HTMLSelectElement;
     const selectedTechnology = Array.from(technologySelect.selectedOptions).map(option => option.value);
 
     if (!getGender) {
@@ -173,3 +151,4 @@ function validation(user) {
 
     return isValidForm;
 }
+

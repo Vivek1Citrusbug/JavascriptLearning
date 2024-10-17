@@ -1,14 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const jquery_1 = __importDefault(require("jquery"));
 let slideIndex = 1;
 let users = JSON.parse(localStorage.getItem('Users') || '[]');
-(0, jquery_1.default)(document).ready(function () {
+$(document).ready(function () {
     loadSlideshow(users);
-    (0, jquery_1.default)('#updateUserForm').on('submit', function (event) {
+    $('#updateUserForm').on('submit', function (event) {
         event.preventDefault();
         updateUser(slideIndex);
     });
@@ -50,14 +45,15 @@ function showUser(n) {
     }
 }
 function updateUser(index) {
-    let updatedUser = {
+    var _a;
+    const updatedUser = {
         userID: users[index - 1].userID,
         name: document.getElementById("name_input").value,
         email: document.getElementById("useremail").value,
         contact: document.getElementById("contactNumber").value,
         zipcode: document.getElementById("zipcode").value,
         birthdate: document.getElementById("birthdate").value,
-        gender: document.querySelector('input[name="genderradio"]:checked').value,
+        gender: (_a = document.querySelector('input[name="genderradio"]:checked')) === null || _a === void 0 ? void 0 : _a.value,
         hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(checkbox => checkbox.value),
         technologies: Array.from(document.getElementById('technology').selectedOptions).map(option => option.value)
     };
@@ -66,20 +62,18 @@ function updateUser(index) {
         localStorage.setItem('Users', JSON.stringify(users));
         alert("User information updated successfully!");
     }
-    else {
-        return;
-    }
 }
 function validation(user) {
+    var _a;
     let isValidForm = true;
-    let error_message_name = document.getElementById('name-error');
-    let error_message_email = document.getElementById('email-error');
-    let error_message_contact = document.getElementById('contact-error');
-    let error_message_zipcode = document.getElementById('zipcode-error');
-    let error_message_birthdate = document.getElementById('birthdate-error');
-    let error_message_gender = document.getElementById('gender-error');
-    let error_message_hobbies = document.getElementById('hobbies-error');
-    let error_message_technology = document.getElementById('technology-error');
+    const error_message_name = document.getElementById('name-error');
+    const error_message_email = document.getElementById('email-error');
+    const error_message_contact = document.getElementById('contact-error');
+    const error_message_zipcode = document.getElementById('zipcode-error');
+    const error_message_birthdate = document.getElementById('birthdate-error');
+    const error_message_gender = document.getElementById('gender-error');
+    const error_message_hobbies = document.getElementById('hobbies-error');
+    const error_message_technology = document.getElementById('technology-error');
     error_message_name.textContent = "";
     error_message_email.textContent = "";
     error_message_contact.textContent = "";
@@ -112,7 +106,7 @@ function validation(user) {
         isValidForm = false;
     }
     const zipcode = document.getElementById('zipcode').value;
-    const birthdate = document.querySelector('input[type="date"]').value;
+    const birthdate = (_a = document.querySelector('input[type="date"]')) === null || _a === void 0 ? void 0 : _a.value;
     if (!zipcode.match(zipcodePattern)) {
         if (zipcode.length < 6)
             error_message_zipcode.textContent = "Zipcode should be 6 numbers long.\n";
