@@ -5,93 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update selected users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/allUserListing.css">
 </head>
 
 <body>
-    <h1>On selected update page</h1>
+    <h1 class="text-center">SELECTED USERS</h1>
     <div class=" container slideshow-container" id="slideshow-container">
         <div class="row">
-            <h2 id="userTitle" class="my-3"></h2>
-            <div class="col">
-                <form id="updateSelectedUserForm">
-                    <div class="form-group my-3">
-                        <label for="name_input" class="title-input">Name:</label>
-                        <input type="text" id="name_input" class="form-control" name="name">
-                        <span id="name-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label for="useremail">Email:</label>
-                        <input type="email" id="useremail" class="form-control" name="email">
-                        <span id="email-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label for="contactNumber">Contact Number:</label>
-                        <input type="text" id="contactNumber" class="form-control" name="contact">
-                        <span id="contact-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label for="zipcode">Zip Code:</label>
-                        <input type="text" id="zipcode" class="form-control" name="zipcode">
-                        <span id="zipcode-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label for="birthdate">Birthdate:</label>
-                        <input type="date" name="birthdate" id="birthdate" class="form-control" min="1980-01-01"
-                            max="2024-01-01">
-                        <span id="birthdate-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label>Gender:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="genderradio" value="Male" id="male">
-                            <label class="form-check-label" for="male">Male</label>
+            <div id="slider">
+                <div>
+                    <h2 id="userTitle"></h2>
+                    <form id="userForm">
+                        <div class="form-group my-2">
+                            <label for="name_input">Name:</label>
+                            <input type="text" class="form-control" id="name_input" name="name" /><br>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="genderradio" value="Female" id="female">
-                            <label class="form-check-label" for="female">Female</label>
+                        <div class="form-group my-2">
+                            <label for="useremail">Email:</label>
+                            <input type="email" id="useremail" class="form-control" name="email" /><br>
                         </div>
-                        <span id="gender-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label>Hobbies:</label>
-                        <div class="form-check">
-                            <input type="checkbox" name="hobbies" value="Reading" class="form-check-input" id="reading">
-                            <label class="form-check-label" for="reading">Reading</label>
+                        <div class="form-group my-2">
+                            <label for="contactNumber">Contact Number:</label>
+                            <input type="text" id="contactNumber" class="form-control" name="contact" /><br>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" name="hobbies" value="Traveling" class="form-check-input"
-                                id="traveling">
-                            <label class="form-check-label" for="traveling">Traveling</label>
+                        <div class="form-group my-2">
+                            <label for="zipcode">Zipcode:</label>
+                            <input type="text" id="zipcode" class="form-control" name="zipcode" /><br>
+                        </div>    
+                        <div class="form-group my-3">
+                            <label for="birthdate">Birthdate:</label>
+                            <input type="date" id="birthdate" class="form-control" name="birthdate" /><br>
                         </div>
-                        <span id="hobbies-error" class="error-message"></span>
-                    </div>
-
-                    <div class="form-group my-3">
-                        <label for="technology">Select Technology:</label>
-                        <select id="technology" class="form-control" multiple>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="Python">Python</option>
-                            <option value="HTML">HTML</option>
-                        </select>
-                        <span id="technology-error" class="error-message"></span>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary my-3">Update</button>
-                    <button type="button" onclick="location.href = 'listUser.html'"
-                        class="btn btn-primary">Back</button>
-                </form>
+                        <div class="form-group my-2">
+                            <label>Gender:</label>
+                            <input type="radio" id="male" name="genderradio" value="Male"> Male
+                            <input type="radio" id="female" name="genderradio" value="Female"> Female<br>
+                        </div>
+                        <div class="form-group my-2">
+                            <label>Hobbies:</label>
+                            <input type="checkbox" name="hobbies" value="Reading"> Reading
+                            <input type="checkbox" name="hobbies" value="Traveling"> Traveling<br>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="technology">Technology:</label>
+                            <select id="technology" name="technology" class="form-control" multiple>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="Python">Python</option>
+                                <option value="HTML">HTML</option>
+                            </select><br>
+                        </div>
+                    </form>
+                </div>
+                <button class="btn btn-primary" onclick="plusSlides(-1)">Previous</button>
+                <button class="btn btn-primary" onclick="plusSlides(1)">Next</button>
+                <button class="btn btn-primary" onclick="window.location.href='listUser.html'">Back</button>
             </div>
         </div>
     </div>
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
