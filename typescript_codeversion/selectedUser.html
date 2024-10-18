@@ -15,37 +15,44 @@
         <div class="row">
             <div id="slider">
                 <div>
-                    <h2 id="userTitle"></h2>
-                    <form id="userForm">
+                    <h1 id="userTitle"></h1>
+                    <form id="userFormUpdated">
                         <div class="form-group my-2">
                             <label for="name_input">Name:</label>
                             <input type="text" class="form-control" id="name_input" name="name" /><br>
+                            <span id="name-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label for="useremail">Email:</label>
                             <input type="email" id="useremail" class="form-control" name="email" /><br>
+                            <span id="email-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label for="contactNumber">Contact Number:</label>
                             <input type="text" id="contactNumber" class="form-control" name="contact" /><br>
+                            <span id="contact-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label for="zipcode">Zipcode:</label>
                             <input type="text" id="zipcode" class="form-control" name="zipcode" /><br>
+                            <span id="zipcode-error" class="error-message"></span>
                         </div>    
                         <div class="form-group my-3">
                             <label for="birthdate">Birthdate:</label>
                             <input type="date" id="birthdate" class="form-control" name="birthdate" /><br>
+                            <span id="birthdate-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label>Gender:</label>
                             <input type="radio" id="male" name="genderradio" value="Male"> Male
                             <input type="radio" id="female" name="genderradio" value="Female"> Female<br>
+                            <span id="gender-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label>Hobbies:</label>
                             <input type="checkbox" name="hobbies" value="Reading"> Reading
                             <input type="checkbox" name="hobbies" value="Traveling"> Traveling<br>
+                            <span id="hobbies-error" class="error-message"></span>
                         </div>
                         <div class="form-group my-2">
                             <label for="technology">Technology:</label>
@@ -54,12 +61,16 @@
                                 <option value="Python">Python</option>
                                 <option value="HTML">HTML</option>
                             </select><br>
+                            <span id="technology-error" class="error-message"></span>
                         </div>
+                        
+                        <button type="submit" class="btn btn-primary my-3">Update</button>
                     </form>
+                        <button class="btn btn-primary" onclick="plusSlides(-1)">Previous</button>
+                        <button class="btn btn-primary" onclick="plusSlides(1)">Next</button>
+                        <button class="btn btn-primary" onclick="window.location.href='listUser.html'">Back</button>
                 </div>
-                <button class="btn btn-primary" onclick="plusSlides(-1)">Previous</button>
-                <button class="btn btn-primary" onclick="plusSlides(1)">Next</button>
-                <button class="btn btn-primary" onclick="window.location.href='listUser.html'">Back</button>
+                
             </div>
         </div>
     </div>
