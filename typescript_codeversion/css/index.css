@@ -9,12 +9,9 @@
 }
 .error-message {
     color: red;
+    font-size: smaller;
 }
-.title-input{
-    font-weight: 600;
-    font-size: 15px;
-    text-align: center;
-}
+
 .border{
     border: 1px solid white;
 }
